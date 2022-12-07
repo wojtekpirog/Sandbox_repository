@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Wojciech Piróg" />
+    <meta
+      name="keywords"
+      content="currency, converter, PLN, USD, CHF, html5, CSS, Javascript"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Konwerter Walut</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>PRZELICZNIK WALUT</h1>
+
+      <div class="box">
+        <div class="left-box">
+          <select name="currency" class="currency pointer" id="list">
+            <option value="EUR" id="eur">Euro</option>
+            <option value="USD" id="usd">Dolar amerykański</option>
+            <option value="CHF" id="chf">Frank szwajcarski</option>
+          </select>
+
+          <input type="number" class="input-box" id="input" />
+        </div>
+
+        <div class="right-box">
+          <div class="currency text-box">Wartość w PLN</div>
+          <div class="currency result-box" id="result"></div>
+        </div>
+      </div>
+
+      <div class="btn-box">
+        <button id="button" class="pointer" onclick="defineSelect()">
+          Zamień na PLN
+        </button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
