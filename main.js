@@ -1,8 +1,8 @@
 const defineSelect = () => {
   fetch(`http://api.nbp.pl/api/exchangerates/tables/c/`)
     .then((response) => response.json())
-    .then((responseData) => {
-      calculateToPln(responseData);
+    .then((responseData) => {      
+      calculateToPln(responseData);      
     })
     .catch((error) => {
       console.log(`An error occured while fetching data: ${error.message}`);
@@ -10,39 +10,28 @@ const defineSelect = () => {
     });
 
   function calculateToPln(responseData) {
-    const amount = document.getElementById("input");
-    const result = document.getElementById("result");
-    const select = document.getElementById("list");
-    const option = select.options[select.selectedIndex].value;
+    const amount = document.querySelector("#input");
+    const result = document.querySelector("#result");
+    const select = document.querySelector("#list");
+    const option = select.options[select.selectedIndex].value; 
+    const arr = []
 
-    const currencies = [
-      responseData[0].rates[0].ask, //dolar
-      responseData[0].rates[3].ask, //euro
-      responseData[0].rates[5].ask, //frank
-    ];
-
-    if (option == "USD") {
-      if (amount.value.length !== 0) {
-        result.innerText = (amount.value * currencies[0]).toFixed(2);
-      } else {
-        console.error("Nie podano wartości");
+    for (currency of responseData[0].rates) {
+      if (currency.code === option) {
+        arr.push(currency.ask)
       }
     }
 
-    if (option == "EUR") {
-      if (amount.value.length !== 0) {
-        result.innerText = (amount.value * currencies[1]).toFixed(2);
+    if (amount.value.length) {
+      if (amount.value >= 0) {
+        result.innerText = (amount.value * arr[0]).toFixed(2);
       } else {
-        console.error("Nie podano wartości");
+        result.innerText = "Nieprawidłowa wartość";
+        console.error("Wartość powinna być większa lub równa zeru.");
       }
-    }
-
-    if (option == "CHF") {
-      if (amount.value.length !== 0) {
-        result.innerText = (amount.value * currencies[2]).toFixed(2);
-      } else {
-        console.error("Nie podano wartości");
-      }
+    } else {
+      result.innerText = "Nie podano wartości";
+      console.error("Nie podano wartości");
     }
   }
 };
