@@ -89,6 +89,7 @@ body {
 .app__content-boxes {
   margin-top: 2em;
   display: flex;
+  flex-wrap: wrap;
   gap: .25em;
 }
 
