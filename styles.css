@@ -26,74 +26,81 @@ body {
   color: var(--light);
 }
 
-.navbar {
+.app {
   width: 94%;
   max-width: 800px;
+  text-align: center;
 }
 
-.navbar__container,
-.navbar__search {
-  display: flex;
-  align-items: center;
-}
-
-.navbar__container {
-  justify-content: space-between;
-  background-color: hsl(225, 78%, 52%);
-  overflow: hidden;
-}
-
-.navbar__links {
-  display: flex;
-  list-style-type: none;
-}
-
-.navbar__links-item {
-  margin: 0 .25em;
-}
-
-.navbar__link {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--light);
-  padding: 1em;
+.app__header,
+.app__content-setting,
+.app__content-button {
   text-transform: uppercase;
-  letter-spacing: .5px;
-  transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
-.navbar__link:hover {
-  background-color: var(--light);
-  color: hsl(225, 78%, 52%);
+.app__header {
+  margin-bottom: 1.4em;
+  font-weight: 600;
 }
 
-.navbar__search {
-  align-self: stretch;
+.app__content-top {
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
 }
 
-.navbar__search-input,
-.navbar__search-icon {
-  height: 100%;
-  padding: 1em;
-  border: none;  
+.app__content-setting {
+  margin-bottom: .75em;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
-.navbar__search-input {
-  width: 220px;
-  background-color: var(--light);
-  color: var(--dark);
-  font-family: var(--system-font);
+.app__content-button {
   font-size: 1.6rem;
-  transform: translateX(0);
-  transition: transform 300ms ease-in;
-}
-
-.navbar__search-input--inactive {
-  transform: translateX(220px);
-}
-
-.navbar__search-icon {
-  background-color: hsl(225, 90%, 33%);
+  margin: 0 .25em;
+  padding: .5em 1em;
+  background: none;
+  border: 2px solid var(--light);
+  border-radius: 6px;
+  color: var(--light);
   cursor: pointer;
-  z-index: 1;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.app__content-button:first-of-type {
+  margin-left: 0;
+}
+
+.app__content-button:last-of-type {
+  margin-right: 0;
+}
+
+.app__content-slider-box {
+  width: 400px;
+  margin: 0 auto .5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__content-slider-box > label {
+  margin-bottom: .25em;
+}
+
+.app__content-boxes {
+  margin-top: 2em;
+  display: flex;
+  gap: .25em;
+}
+
+.app__content-box {
+  width: 25px;
+  height: 25px;
+  border: 2px solid black;
+}
+
+@media (hover: hover) {
+  .app__content-button:hover {
+    background-color: var(--light);
+    color: var(--dark);
+  }
 }

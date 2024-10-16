@@ -9,48 +9,64 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <!-- Menu -->
-    <div class="navbar__container">
-      <!-- Links -->
-      <ul class="navbar__links">
-        <!-- Link -->
-        <li class="navbar__links-item">
-          <a href="#" class="navbar__link">Home</a>
-        </li> 
-        <!-- Link -->
-        <!-- Link -->
-        <li class="navbar__links-item">
-          <a href="#" class="navbar__link">About</a>
-        </li> 
-        <!-- Link -->
-        <!-- Link -->
-        <li class="navbar__links-item">
-          <a href="#" class="navbar__link">Projects</a>
-        </li> 
-        <!-- Link -->
-        <!-- Link -->
-        <li class="navbar__links-item">
-          <a href="#" class="navbar__link">Contact</a>
-        </li> 
-        <!-- Link -->
-      </ul> 
-      <!-- Links -->
-      <!-- Search box -->
-      <div class="navbar__search">
-        <!-- Input -->
-        <input type="search" id="search" class="navbar__search-input navbar__search-input--inactive" placeholder="Search..." aria-hidden="true">
-        <!-- Input -->
-        <!-- Icon -->
-        <button type="button" class="navbar__search-icon" aria-expanded="false" aria-controls="search">🔍</button> 
-        <!-- Icon -->
+  <!-- APP -->
+  <div class="app">
+    <!-- HEADER -->
+    <header>
+      <h1 class="app__header">Advanced Colourful Plate</h1>   
+    </header>
+    <!-- MAIN -->
+    <main>
+      <!-- CONTENT -->
+      <div class="app__content">
+        <!-- Top -->
+        <div class="app__content-top">
+          <!-- Buttons -->
+          <div class="app__content-buttons">
+            <!-- Setting -->
+            <h2 class="app__content-setting">animation speed</h2>
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="speed" data-speed="10">slow</button> 
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="speed" data-speed="3">normal</button> 
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="speed" data-speed=".75">fast</button>
+          </div>
+          <!-- Buttons -->
+          <!-- Buttons -->
+          <div class="app__content-buttons">
+            <!-- Setting -->
+            <h2 class="app__content-setting">color range</h2>
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="color" data-color-range="0">red</button> 
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="color" data-color-range="120">green</button> 
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="color" data-color-range="220">blue</button>
+            <!-- Button -->
+            <button type="button" class="app__content-button" data-setting="color" data-color-range="360">rainbow</button>
+          </div>
+          <!-- Buttons -->
+        </div> 
+        <!-- Top -->
+        <!-- Slider box -->
+        <div class="app__content-slider-box">
+          <!-- Slider -->
+          <label for="saturation">Saturation: 80%</label>
+          <input type="range" id="saturation" class="app__content-slider" min="0" max="100" value="80"> 
+        </div> 
+        <!-- Slider box -->
+        <div class="app__content-slider-box">
+          <!-- Slider -->
+          <label for="lightness">Lightness: 50%</label>
+          <input type="range" id="lightness" class="app__content-slider" min="0" max="100" value="50"> 
+        </div>
+        <!-- Boxes -->
+        <div class="app__content-boxes"></div> 
       </div> 
-      <!-- Search box -->
-    </div> 
-    <!-- Menu -->
-  </nav>
-  <!-- Navbar -->
+    </main>
+  </div>
+  <!-- APP -->
   <script src="./main.js" defer></script>
 </body>
 </html>
