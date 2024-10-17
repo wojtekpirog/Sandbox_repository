@@ -8,10 +8,12 @@ let lightnessPercentage;
 
 // This is a variable holding the number of boxes that will be created
 const squaresToBeRendered = 560;
+
 let range = 360;
-let hue = undefined;
-// The mormal speed of the animation
 let speed = 3;
+
+// Default value of the color (undefined)
+let hue = undefined;
 // Default value of the saturation
 let saturation = 80;
 // Default value of the lightness
@@ -34,23 +36,15 @@ function getElements() {
 };
 
 function addListeners() {
-  colorButtons.forEach((colorButton) => {
-    colorButton.addEventListener("click", () => handleSetColor(colorButton.dataset.colorRange));
-  });
-  speedButtons.forEach((speedButton) => {
-    speedButton.addEventListener("click", () => handleSetSpeed(speedButton.dataset.speed));
-  });
-  saturationInput.addEventListener("mousemove", () => {
-    saturation = parseInt(saturationInput.value);
-    saturationPercentage.textContent = `Saturation: ${saturation}%`;
-  });
-  lightnessInput.addEventListener("mousemove", () => {
-    lightness = parseInt(lightnessInput.value);
-    lightnessPercentage.textContent = `Lightness: ${lightness}%`;
-  });
+  colorButtons.forEach((colorButton) => colorButton.addEventListener("click", () => setRange(colorButton.dataset.colorRange)));
+  speedButtons.forEach((speedButton) => speedButton.addEventListener("click", () => setSpeed(speedButton.dataset.speed)));
+  saturationInput.addEventListener("mousemove", setSaturation);
+  lightnessInput.addEventListener("mousemove", setLightness);
 };
 
 const createSquares = () => {
+  contentBoxesContainer.innerHTML = "";
+
   for (let i = 0; i < squaresToBeRendered; i++) {
     const square = document.createElement("div");
     square.classList.add("app__content-box");
@@ -60,31 +54,38 @@ const createSquares = () => {
   }
 }
 
-const handleSetColor = (colorRange) => { 
-  range = parseFloat(colorRange);
-
-  document.querySelectorAll(".app__content-box").forEach((contentBox) => setColor(contentBox));
-}
-
-const handleSetSpeed = (speedValue) => {
-  speed = parseFloat(speedValue);
-
-  document.querySelectorAll(".app__content-box").forEach((contentBox) => contentBox.style.animationDuration = `${speed}s`);
-}
-
-const setColor = (contentBox) => {
+const setColor = (square) => {
   range === 360
     ? hue = Math.floor(Math.random() * 360)
     : hue = Math.floor(Math.random() * 60) + range;
 
-  saturation = saturationInput.value;
-  lightness = lightnessInput.value;
-  
-  contentBox.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  saturation = parseInt(saturationInput.value);
+  lightness = parseInt(lightnessInput.value);
+
+  square.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-const removeColor = (contentBox) => {
-  contentBox.style.backgroundColor = "transparent";
+const setRange = (colorRange) => {
+  range = parseInt(colorRange);
+  createSquares();
+}
+
+const setSpeed = (speed) => {
+  document.querySelectorAll(".app__content-box").forEach((square) => square.style.transitionDuration = `${speed}s`);
+}
+
+const setSaturation = () => {
+  saturation = saturationInput.value;
+  saturationPercentage.textContent = `Saturation: ${saturation}%`;
+}
+
+const setLightness = () => {
+  lightness = lightnessInput.value;
+  lightnessPercentage.textContent = `Lightness: ${lightness}%`;
+}
+
+const removeColor = (square) => {
+  square.style.backgroundColor = "transparent";
 }
 
 document.addEventListener("DOMContentLoaded", main);

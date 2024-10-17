@@ -97,6 +97,12 @@ body {
   width: 25px;
   height: 25px;
   border: 2px solid black;
+  transition-property: background-color;
+  transition-duration: 3s;
+}
+
+.app__content-box:hover {
+  transition-duration: 0s !important;
 }
 
 @media (hover: hover) {
