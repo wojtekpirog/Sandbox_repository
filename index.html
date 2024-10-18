@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Wojciech Piróg">
-  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
   <title>Document</title>
 </head>
 <body>
@@ -13,60 +13,47 @@
   <div class="app">
     <!-- HEADER -->
     <header>
-      <h1 class="app__header">Advanced Colourful Plate</h1>   
+      <h1 class="app__header">Fake Form</h1>   
     </header>
     <!-- MAIN -->
     <main>
-      <!-- CONTENT -->
-      <div class="app__content">
-        <!-- Top -->
-        <div class="app__content-top">
-          <!-- Buttons -->
-          <div class="app__content-buttons">
-            <!-- Setting -->
-            <h2 class="app__content-setting">animation speed</h2>
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="speed" data-speed="10">slow</button> 
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="speed" data-speed="3">normal</button> 
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="speed" data-speed=".75">fast</button>
-          </div>
-          <!-- Buttons -->
-          <!-- Buttons -->
-          <div class="app__content-buttons">
-            <!-- Setting -->
-            <h2 class="app__content-setting">color range</h2>
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="color" data-color-range="0">red</button> 
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="color" data-color-range="120">green</button> 
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="color" data-color-range="220">blue</button>
-            <!-- Button -->
-            <button type="button" class="app__content-button" data-setting="color" data-color-range="360">rainbow</button>
-          </div>
-          <!-- Buttons -->
-        </div> 
-        <!-- Top -->
-        <!-- Slider box -->
-        <div class="app__content-slider-box">
-          <!-- Slider -->
-          <label for="saturation" class="app__content-label">Saturation: 80%</label>
-          <input type="range" id="saturation" class="app__content-slider" min="0" max="100" step="1" value="80"> 
-        </div> 
-        <!-- Slider box -->
-        <div class="app__content-slider-box">
-          <!-- Slider -->
-          <label for="lightness" class="app__content-label">Lightness: 50%</label>
-          <input type="range" id="lightness" class="app__content-slider" min="0" max="100" step="1" value="50"> 
-        </div>
-        <!-- Boxes -->
-        <div class="app__content-boxes"></div> 
+      <!-- Form -->
+      <form class="app__form" aria-describedby="step-indicator">
+        <!-- Step indicator -->
+        <div id="step-indicator" class="app__form-indicator">You are on step 1 of 5</div> 
+        <!-- Step indicator -->
+        <!-- Pages -->
+        <div class="app__form-page app__form-page--active" data-page="1" aria-current="page">Page #1</div>
+        <div class="app__form-page" data-page="2">Page #2</div>
+        <div class="app__form-page" data-page="3">Page #3</div>
+        <div class="app__form-page" data-page="4">Page #4</div>
+        <div class="app__form-page" data-page="5">Page #5</div>
+        <!-- Pages -->
+      </form> 
+      <!-- Form -->
+      <!-- Progress box -->
+      <div class="app__progress-box">
+        <!-- Progress bar -->
+        <div class="app__progress-bar"></div>
+        <!-- Progress bar -->
+        <!-- Steps -->
+        <div class="app__progress-step app__progress-step--active" data-step="1" aria-label="You are on step 1 of 5" aria-current="step"><span>1</span></div>
+        <div class="app__progress-step" data-step="2" aria-label="You are on step 2 of 5"><span>2</span></div>
+        <div class="app__progress-step" data-step="3" aria-label="You are on step 3 of 5"><span>3</span></div>
+        <div class="app__progress-step" data-step="4" aria-label="You are on step 4 of 5"><span>4</span></div>
+        <div class="app__progress-step" data-step="5" aria-label="You are on step 5 of 5"><span>5</span></div> 
+        <!-- Steps -->
+      </div>
+      <!-- Progress box -->
+      <!-- Buttons -->
+      <div class="app__buttons">
+        <button type="button" class="app__button app__button--prev" aria-label="Go to the previous form step" disabled>⬅️</button>
+        <button type="button" class="app__button app__button--next" aria-label="Go to the next form step">➡️</button>
       </div> 
+      <!-- Buttons -->
     </main>
   </div>
   <!-- APP -->
-  <script src="./main.js" defer></script>
+  <!-- <script src="./main.js" defer></script> -->
 </body>
 </html>

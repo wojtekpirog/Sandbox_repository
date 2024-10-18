@@ -1,0 +1,133 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  --system-font: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --light: hsl(0, 0%, 85%);
+  --dark: hsl(0, 0%, 15%);
+  --royal-blue: hsl(219, 100%, 50%);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-family: var(--system-font);
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.app {
+  width: 94%;
+  max-width: 600px;
+  text-align: center;
+}
+.app__header {
+  margin-bottom: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.app__form {
+  position: relative;
+  margin-bottom: 2em;
+  height: 400px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.app__form-indicator {
+  opacity: 0;
+}
+.app__form-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light);
+  color: var(--dark);
+  font-size: 2rem;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 300ms linear;
+}
+.app__form-page--active {
+  opacity: 1;
+  z-index: 1;
+}
+.app__progress-box {
+  margin-bottom: 2em;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app__progress-box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--light);
+  z-index: -1;
+}
+.app__progress-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0%;
+  height: 4px;
+  background-color: var(--royal-blue);
+  transition: width 300ms linear;
+}
+.app__progress-step {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  z-index: 1;
+}
+.app__progress-step > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.app__progress-step--active {
+  background-color: var(--royal-blue);
+  color: var(--light);
+}
+.app__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+.app__button {
+  padding: 0.5em 1em;
+  font-size: 1.6rem;
+  background-color: var(--royal-blue);
+  color: var(--light);
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.app__button:focus {
+  outline: none;
+  border-color: var(--light);
+}
+.app__button:disabled {
+  opacity: 0.5;
+  background-color: var(--light);
+  cursor: not-allowed;
+}/*# sourceMappingURL=styles.css.map */
