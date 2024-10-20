@@ -1,91 +1,82 @@
-let contentBoxesContainer;
-let speedButtons;
-let colorButtons;
-let saturationInput;
-let saturationPercentage;
-let lightnessInput;
-let lightnessPercentage;
+let stepIndicator;
+let formPages;
+let progressBar;
+let progressSteps;
+let prevButton;
+let nextButton;
 
-// This is a variable holding the number of boxes that will be created
-const squaresToBeRendered = 560;
-
-let range = 360;
-let speed = 3;
-
-// Default value of the color (undefined)
-let hue = undefined;
-// Default value of the saturation
-let saturation = 80;
-// Default value of the lightness
-let lightness = 50;
+// Bieżący krok formularza:
+let currentStep = 1;
 
 function main() {
   getElements();
   addListeners();
-  createSquares();
 };
 
 function getElements() {
-  contentBoxesContainer = document.querySelector(".app__content-boxes");
-  speedButtons = document.querySelectorAll(".app__content-button[data-setting='speed']");
-  colorButtons = document.querySelectorAll(".app__content-button[data-setting='color']");
-  saturationInput = document.querySelector("#saturation");
-  saturationPercentage = document.querySelector(".app__content-label[for='saturation']");
-  lightnessInput = document.querySelector("#lightness");
-  lightnessPercentage = document.querySelector(".app__content-label[for='lightness']");
+  stepIndicator = document.querySelector(".app__form-indicator");
+  formPages = document.querySelectorAll(".app__form-page");
+  progressBar = document.querySelector(".app__progress-bar");
+  progressSteps = document.querySelectorAll(".app__progress-step");
+  prevButton = document.querySelector(".app__button--prev");
+  nextButton = document.querySelector(".app__button--next");
 };
 
 function addListeners() {
-  colorButtons.forEach((colorButton) => colorButton.addEventListener("click", () => setRange(colorButton.dataset.colorRange)));
-  speedButtons.forEach((speedButton) => speedButton.addEventListener("click", () => setSpeed(speedButton.dataset.speed)));
-  saturationInput.addEventListener("mousemove", setSaturation);
-  lightnessInput.addEventListener("mousemove", setLightness);
+  prevButton.addEventListener("click", goToPrevStep);
+  nextButton.addEventListener("click", goToNextStep);
 };
 
-const createSquares = () => {
-  contentBoxesContainer.innerHTML = "";
+const goToNextStep = () => {
+  currentStep += 1;
+  // Czy osiągnięto ostatni krok formularza?
+  currentStep > progressSteps.length && (currentStep = progressSteps.length);
+  handleProgress();
+}
 
-  for (let i = 0; i < squaresToBeRendered; i++) {
-    const square = document.createElement("div");
-    square.classList.add("app__content-box");
-    square.addEventListener("mouseover", () => setColor(square));
-    square.addEventListener("mouseout", () => removeColor(square));
-    contentBoxesContainer.appendChild(square);
+const goToPrevStep = () => {
+  currentStep -= 1;
+  // Czy osiągnięto pierwszy krok formularza?
+  currentStep < 1 && (currentStep = 1);
+  handleProgress();
+}
+
+const handleProgress = () => {
+  progressSteps.forEach((step, index) => {
+    step.removeAttribute("aria-current");
+    step.classList.remove("app__progress-step--active");
+
+    currentStep === index + 1 && step.setAttribute("aria-current", "step");
+    currentStep >= index + 1 && step.classList.add("app__progress-step--active");
+  });
+  
+  progressBar.style.setProperty("--width", `${100 * ((currentStep - 1) / (progressSteps.length - 1))}%`);
+  stepIndicator.textContent = `You are on step ${currentStep} of ${progressSteps.length}.`;
+  changeFormPage();
+  handleDisabled();
+}
+
+const handleDisabled = () => {
+  if (currentStep === progressSteps.length) {
+    nextButton.disabled = true;
+  } else if (currentStep === 1) {
+    prevButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+    nextButton.disabled = false;
   }
 }
 
-const setColor = (square) => {
-  range === 360
-    ? hue = Math.floor(Math.random() * 360)
-    : hue = Math.floor(Math.random() * 60) + range;
-
-  saturation = parseInt(saturationInput.value);
-  lightness = parseInt(lightnessInput.value);
-
-  square.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
-
-const setRange = (colorRange) => {
-  range = parseInt(colorRange);
-  createSquares();
-}
-
-const setSpeed = (speed) => {
-  document.querySelectorAll(".app__content-box").forEach((square) => square.style.transitionDuration = `${speed}s`);
-}
-
-const setSaturation = () => {
-  saturation = saturationInput.value;
-  saturationPercentage.textContent = `Saturation: ${saturation}%`;
-}
-
-const setLightness = () => {
-  lightness = lightnessInput.value;
-  lightnessPercentage.textContent = `Lightness: ${lightness}%`;
-}
-
-const removeColor = (square) => {
-  square.style.backgroundColor = "transparent";
+const changeFormPage = () => {
+  formPages.forEach((page, index) => {
+    if (currentStep === index + 1) {
+      page.classList.add("app__form-page--active");
+      page.setAttribute("aria-current", "page");
+    } else {
+      page.classList.remove("app__form-page--active");
+      page.removeAttribute("aria-current");
+    };
+  });
 }
 
 document.addEventListener("DOMContentLoaded", main);
