@@ -18,18 +18,31 @@ function addListeners() {
   window.addEventListener("click", closeOutsideAccordion);
 }
 
-function handleAccordionBoxes() {
-  if (this.nextElementSibling.classList.contains("app__accordion-text-box--active")) {
-    this.nextElementSibling.classList.remove("app__accordion-text-box--active");
+function handleAccordionBoxes(event) {
+  const target = event.currentTarget;
+
+  if (target.nextElementSibling.classList.contains("app__accordion-text-box--active")) {
+    target.nextElementSibling.classList.remove("app__accordion-text-box--active");
+    target.setAttribute("aria-expanded", "false");
     return ;
   }
 
   closeAccordionBoxes();
-  this.nextElementSibling.classList.toggle("app__accordion-text-box--active");
+
+  if (!target.nextElementSibling.classList.contains("app__accordion-text-box--active")) {
+    target.nextElementSibling.classList.add("app__accordion-text-box--active");
+    target.setAttribute("aria-expanded", "true");
+  } else {
+    target.nextElementSibling.classList.remove("app__accordion-text-box--active");
+    target.setAttribute("aria-expanded", "false");
+  }
 }
 
 const closeAccordionBoxes = () => {
-  accordion.querySelectorAll(".app__accordion-text-box--active").forEach((textBox) => textBox.classList.remove("app__accordion-text-box--active"));
+  accordion.querySelectorAll(".app__accordion-text-box--active").forEach((textBox) => {
+    textBox.classList.remove("app__accordion-text-box--active");
+    textBox.previousElementSibling.setAttribute("aria-expanded", "false");
+  });
 }
 
 const closeOutsideAccordion = (event) => {
