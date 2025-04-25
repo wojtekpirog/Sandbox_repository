@@ -5,63 +5,141 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Wojciech Piróg">
-  <link rel="stylesheet" type="text/css" href="./css/styles.css">
-  <title>Document</title>
+  <title>DZ&P Corporation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <!-- APP -->
-  <div class="app">
-    <!-- HEADER -->
-    <header>
-      <h1 class="app__header">Pir<span style="color: royalblue;">Dev</span>.com</h1>
-    </header>
-    <!-- HEADER -->
-    <!-- MAIN -->
-    <main>
-      <!-- Accordion -->
-      <div class="app__accordion">
-        <!-- Accordion box -->
-        <div class="app__accordion-box">
-          <!-- Header -->
-          <button type="button" class="app__accordion-button" aria-expanded="false" aria-controls="collapseOne">Opcja 1</button> 
-          <!-- Header -->
-          <!-- Content -->
-          <div id="collapseOne" class="app__accordion-text-box">
-            <p clas="app__accordion-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente optio saepe deserunt odit quidem pariatur praesentium laborum unde assumenda! Nihil!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, cum?</p>
-          </div> 
-          <!-- Content -->
-        </div> 
-        <!-- Accordion box -->
-        <!-- Accordion box -->
-        <div class="app__accordion-box">
-          <!-- Button -->
-          <button type="button" class="app__accordion-button" aria-expanded="false" aria-controls="collapseTwo">Opcja 2</button>
-          <!-- Button -->
-          <!-- Content -->
-          <div id="collapseTwo" class="app__accordion-text-box">
-            <p class="app__accordion-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque laborum, ratione eveniet maiores veniam necessitatibus soluta repellendus, officia quaerat sint minima, sit voluptates ducimus exercitationem incidunt magni pariatur nam similique.</p>
-          </div> 
-          <!-- Content -->
-        </div> 
-        <!-- Accordion box -->
-        <!-- Accordion box -->
-        <div class="app__accordion-box">
-          <!-- Button -->
-          <button type="button" class="app__accordion-button" aria-expanded="false" aria-controls="collapseThree">Opcja 3</button>
-          <!-- Button -->
-          <!-- Content -->
-          <div id="collapseThree" class="app__accordion-text-box">
-            <p class="app__accordion-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vel cum eligendi ea magnam delectus obcaecati, vero eos doloremque voluptas autem corporis architecto quos quae similique distinctio exercitationem tenetur accusantium officia dolores minus perspiciatis quo quas nobis. Iure, aliquid eveniet!</p>
-          </div> 
-          <!-- Content -->
-        </div> 
-        <!-- Accordion box -->
-      </div> 
-      <!-- Accordion -->
-    </main>
-    <!-- MAIN -->
-  </div>
-  <!-- APP -->
-  <script src="./main.js" defer></script>
+  <!--  -->
+  <header class="header">
+    <!--  -->
+    <button type="button" class="hamburger hamburger__squeeze">
+      <!--  -->
+      <span class="hamburger__box">
+        <!--  -->
+        <span class="hamburger__inner"></span>
+        <!--  -->
+      </span>
+      <!--  -->
+    </button>
+    <!-- Nawigacja mobilna -->
+    <nav class="nav nav__mobile">
+      <!--  -->
+      <ul class="nav__list">
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#invest">inwestuj</a>
+        </li>
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#plan">planuj</a>
+        </li>
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#contact">kontakt</a>
+        </li>
+        <!--  -->
+      </ul>
+      <!--  -->    
+    </nav>
+    <!-- Nawigacja desktopowa -->
+    <nav class="nav nav__desktop">
+      <!--  -->
+      <ul class="nav__list">
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#invest">inwestuj</a>
+        </li>
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#plan">planuj</a>
+        </li>
+        <!--  -->
+        <li class="nav__list-item">
+          <a class="nav__link" href="#contact">kontakt</a>
+        </li>
+        <!--  -->
+      </ul>
+      <!--  -->
+    </nav>
+    <!--  -->
+    <div class="header__text">
+      <!--  -->
+      <h1 class="header__text-heading">Diamenciki, Złoto & Pieniążki</h1>
+      <!--  -->
+      <p class="header__text-subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus commodi doloribus quibusdam voluptatibus nostrum eos.</p>
+      <!--  -->
+    </div>
+    <!--  -->
+    <div class="header__img">
+      <!--  -->
+      <div class="header__img-shadow"></div>
+      <!--  -->
+    </div>
+    <!--  -->
+    <a href="#cards">
+      <!--  -->
+      <div class="header__arrow">
+        <!--  -->
+        <img src="./assets/icons/arrow-down.svg" class="header__arrow-icon" alt="">
+        <!--  -->
+      </div>
+      <!--  -->
+    </a>
+    <!--  -->
+    <img class="header__square header__square-one" src="./assets/icons/square.svg" alt="">
+    <img class="header__square header__square-two" src="./assets/icons/square.svg" alt="">
+    <!--  -->
+  </header>
+  <!--  -->
+  <main>
+    <!--  -->
+    <section id="cards" class="cards">
+      <!--  -->
+      <div class="wrapper">
+        <!--  -->
+        <div class="cards__box">
+          <!--  -->
+          <div class="cards__card cards__card--one">
+            <!--  -->
+            <img class="cards__card-icon" src="./assets/icons/trending-up.svg" alt="">
+            <h3 class="cards__card-heading">Zysk</h3>
+            <p class="cards__card-text">Lorem ipsum dolor sit.</p>
+            <!--  -->
+          </div>
+          <!--  -->
+          <div class="cards__card cards__card--two">
+            <!--  -->
+            <img class="cards__card-icon" src="./assets/icons/award.svg" alt="">
+            <h3 class="cards__card-heading">Numer 1</h3>
+            <p class="cards__card-text">Lorem ipsum dolor sit.</p>
+            <!--  -->
+          </div>
+          <!--  -->
+          <div class="cards__card cards__card--three">
+            <!--  -->
+            <img class="cards__card-icon" src="./assets/icons/globe.svg" alt="">
+            <h3 class="cards__card-heading">Zasięgi globalne</h3>
+            <p class="cards__card-text">Lorem ipsum dolor sit.</p>
+            <!--  -->
+          </div>
+          <!--  -->
+        </div>
+        <!--  -->
+      </div>
+      <!--  -->
+    </section>
+    <!--  -->
+  </main>
+  <!--  -->
+  <footer class="footer">
+    <!--  -->
+    <p class="footer__bottom-text">&copy; <span class="footer__year"></span> DZ&P Corporation</p>
+    <!--  -->
+  </footer>
+  <!--  -->
+  <script src="./js/main.js" defer></script>
 </body>
 </html>
