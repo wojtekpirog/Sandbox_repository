@@ -28,6 +28,11 @@ body {
   font-family: 'Raleway', Arial, sans-serif;
 }
 
+.wrapper {
+  margin: 0 auto;
+  width: 96%;
+}
+
 // Hamburger
 
 .hamburger {
@@ -217,7 +222,7 @@ body {
     &-one,
     &-two {
       width: 10%;
-      animation-duration: 55s;
+      animation-duration: .5s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
     }
@@ -352,24 +357,16 @@ body {
   &__card {
     position: relative;
     display: grid;
-    gap: .25em;
+    grid-column: 1 / -1;
     justify-items: center;
-    padding: 3em;
+    gap: .5rem;
     text-align: center;
+    padding: 2em;
     border: 1px solid transparent;
     border-radius: 8px;
     background-color: $dark;
-    transition: background-color 300ms linear, border 300ms linear;
-    opacity: 0;
-
-    &:hover {
-      background-color: $darker;
-      border-color: $gold;
-
-      // &::before {
-      //   animation: pulse 1s linear;
-      // }
-    }
+    transition: background-color 200ms linear, border 300ms linear;
+    z-index: 5;
 
     &::before {
       content: "";
@@ -378,11 +375,81 @@ body {
       height: 100%;
       border: 1px solid $gold;
       border-radius: 8px;
+      opacity: 0;
+    }
+
+    &:hover {
+      background-color: $darker;
+      border-color: $gold;
+      z-index: 1;
+
+      &::before {
+        animation: pulse 1s linear;
+      }
+    }
+
+    &-icon,
+    &-heading {
+      margin-bottom: .5em;
+    }
+
+    &-icon {
+      width: 60px;
+    }
+
+    &-heading {
+      text-transform: uppercase;
+    }
+
+    &--one {
+      grid-row: 1 / 2;
+    }
+
+    &--two {
+      grid-row: 2 / 3;
+    }
+
+    &--three {
+      grid-row: 3 / 4;
+    }
+  }
+}
+
+/** BREAKPOINTS **/
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 720px;
+  }
+
+  .cards {
+    &__box {
+      padding: 10em 2em;
+    }
+
+    &__card {
+      grid-row: 1 / 2;
+
+      &--one {
+        grid-column: 1 / 4;
+      }
+
+      &--two {
+        grid-column: 4 / 7;
+      }
+
+      &--three {
+        grid-column: 7 / -1;
+      }
     }
   }
 }
 
 @media (min-width: 992px) {
+  .wrapper {
+    width: 960px;
+  }
+
   .header {
     grid-template-rows: auto repeat(2, 1fr);
 
@@ -429,6 +496,10 @@ body {
 }
 
 @media (min-width: 1200px) {
+  .wrapper {
+    width: 1140px;
+  }
+
   .header {
     &__text {
       &-subtitle {

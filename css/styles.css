@@ -19,6 +19,11 @@ body {
   font-family: "Raleway", Arial, sans-serif;
 }
 
+.wrapper {
+  margin: 0 auto;
+  width: 96%;
+}
+
 .hamburger {
   position: absolute;
   top: 2em;
@@ -171,7 +176,7 @@ body {
 }
 .header__square-one, .header__square-two {
   width: 10%;
-  animation-duration: 55s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -281,19 +286,16 @@ body {
 .cards__card {
   position: relative;
   display: grid;
-  gap: 0.25em;
+  grid-column: 1/-1;
   justify-items: center;
-  padding: 3em;
+  gap: 0.5rem;
   text-align: center;
+  padding: 2em;
   border: 1px solid transparent;
   border-radius: 8px;
   background-color: #232323;
-  transition: background-color 300ms linear, border 300ms linear;
-  opacity: 0;
-}
-.cards__card:hover {
-  background-color: #191919;
-  border-color: #d6c78e;
+  transition: background-color 200ms linear, border 300ms linear;
+  z-index: 5;
 }
 .cards__card::before {
   content: "";
@@ -302,9 +304,60 @@ body {
   height: 100%;
   border: 1px solid #d6c78e;
   border-radius: 8px;
+  opacity: 0;
+}
+.cards__card:hover {
+  background-color: #191919;
+  border-color: #d6c78e;
+  z-index: 1;
+}
+.cards__card:hover::before {
+  animation: pulse 1s linear;
+}
+.cards__card-icon, .cards__card-heading {
+  margin-bottom: 0.5em;
+}
+.cards__card-icon {
+  width: 60px;
+}
+.cards__card-heading {
+  text-transform: uppercase;
+}
+.cards__card--one {
+  grid-row: 1/2;
+}
+.cards__card--two {
+  grid-row: 2/3;
+}
+.cards__card--three {
+  grid-row: 3/4;
 }
 
+/** BREAKPOINTS **/
+@media (min-width: 768px) {
+  .wrapper {
+    width: 720px;
+  }
+  .cards__box {
+    padding: 10em 2em;
+  }
+  .cards__card {
+    grid-row: 1/2;
+  }
+  .cards__card--one {
+    grid-column: 1/4;
+  }
+  .cards__card--two {
+    grid-column: 4/7;
+  }
+  .cards__card--three {
+    grid-column: 7/-1;
+  }
+}
 @media (min-width: 992px) {
+  .wrapper {
+    width: 960px;
+  }
   .header {
     grid-template-rows: auto repeat(2, 1fr);
   }
@@ -337,6 +390,9 @@ body {
   }
 }
 @media (min-width: 1200px) {
+  .wrapper {
+    width: 1140px;
+  }
   .header__text-subtitle {
     font-size: 2rem;
   }
