@@ -24,6 +24,28 @@ body {
   width: 96%;
 }
 
+.section-title {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  margin: 0 auto 3em;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: #d6c78e;
+}
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 2px;
+  width: 40px;
+  height: 2px;
+  background-color: #d6c78e;
+}
+.section-title span {
+  font-weight: 900;
+}
+
 .hamburger {
   position: absolute;
   top: 2em;
@@ -333,10 +355,98 @@ body {
   grid-row: 3/4;
 }
 
+.info {
+  position: relative;
+  display: grid;
+  grid-template-areas: "title title title" "box box box" "box box box";
+  padding: 6em 2em;
+}
+.info__title {
+  grid-area: title;
+}
+.info__container {
+  grid-area: box;
+}
+.info__data-img {
+  width: 100%;
+  filter: saturate(0.8) sepia();
+}
+.info__data-heading {
+  margin: 0.4em 0;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #d6c78e;
+}
+.info__data-description {
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+.info__data-link {
+  display: inline-block;
+  margin-bottom: 2em;
+  color: #d6c78e;
+  font-weight: 700;
+  transition: color 300ms linear;
+}
+.info__data-link:hover {
+  color: #9b9165;
+}
+.info__img {
+  display: none;
+  position: absolute;
+  opacity: 0.1;
+  z-index: -5;
+}
+.info__img--one {
+  width: 18%;
+  top: 14%;
+  animation: rotate-right 150s infinite linear;
+}
+.info__img--two {
+  bottom: 10%;
+  left: 10%;
+  width: 30%;
+  animation: rotate-right 120s infinite linear;
+}
+.info__img--three {
+  top: 30%;
+  left: 16%;
+  width: 40%;
+  animation: rotate-left 75s infinite linear;
+}
+
 /** BREAKPOINTS **/
+@media (min-width: 576px) {
+  .info {
+    padding: 10em 2em;
+    grid-template-areas: "title box" "title box" "title box";
+  }
+  .info__title {
+    padding-right: 2em;
+  }
+  .info__title > .section-title {
+    margin: 0 auto 0 0;
+  }
+  .info__container {
+    display: grid;
+    justify-content: end;
+  }
+  .info__data {
+    max-width: 500px;
+  }
+  .info__img {
+    display: block;
+  }
+}
 @media (min-width: 768px) {
   .wrapper {
     width: 720px;
+  }
+  .section-title {
+    font-size: 4rem;
+  }
+  .section-title::before {
+    height: 4px;
   }
   .cards__box {
     padding: 10em 2em;
@@ -357,6 +467,9 @@ body {
 @media (min-width: 992px) {
   .wrapper {
     width: 960px;
+  }
+  .section-title {
+    font-size: 4.8rem;
   }
   .header {
     grid-template-rows: auto repeat(2, 1fr);
