@@ -632,6 +632,106 @@ body {
 
 // Contact
 
+.contact {
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+
+    &-group {
+      margin-bottom: 2em;
+      grid-column: 1/-1;
+
+      &:nth-child(1) {
+        grid-row: 1/2;
+      }
+
+      &:nth-child(2) {
+        grid-row: 2/3;
+      }
+
+      &:nth-child(3) {
+        grid-row: 3/4;
+      }
+    }
+
+    &-label {
+      display: block;
+      margin-bottom: .5em;
+      font-size: 2rem;
+    }
+
+    &-input,
+    &-textarea {
+      width: 100%;
+      padding: 1em;
+      background: none;
+      color: $white;
+      border: 2px solid rgba(255, 255, 255, .2);
+      font-size: 1.6rem;
+      font-family: "Raleway", Arial, sans-serif;
+
+      &.error {
+        border-color: $red;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $gold;
+      }
+    }
+
+    &-textarea {
+      min-height: 100px;
+      max-height: 250px;
+      resize: vertical;
+    }
+
+    &-error {
+      display: none;
+      margin-top: .25em;
+      color: $red;
+    }
+
+    &-btn {
+      grid-column: 1/-1;
+      padding: 1em 2em;
+      font-size: 1.6rem;
+      font-family: "Raleway", Arial, sans-serif;
+      background: none;
+      color: $white;
+      border: 2px solid $white;
+      transition: background-color 200ms linear, color 200ms linear;
+      cursor: pointer;
+
+      @media (hover: hover) {
+        &:hover {
+          color: $dark;
+        }
+      }
+
+      &--clear {
+        @media (hover: hover) {
+          &:hover {
+            background-color: $white;
+          }
+        }
+      }
+
+      &--submit {
+        color: $gold;
+        border-color: $gold;
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: $gold;
+          }
+        }
+      }
+    }
+  }
+}
+
 // Footer
 
 .footer {

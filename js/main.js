@@ -2,6 +2,13 @@ let hamburgerSqueeze;
 let mobileNav;
 let currentYear;
 let submitBtn;
+// Form fields
+let fullname;
+let email;
+let textarea;
+// Form btns
+let formResetBtn;
+let formSubmitBtn;
 
 function main() {
   getElements();
@@ -14,13 +21,20 @@ function getElements() {
   mobileNav = document.querySelector(".nav__mobile");
   currentYear = document.querySelector(".footer__year");
   submitBtn = document.querySelector(".newsletter__form-interactive > button");
-
-  console.log(submitBtn);
+  // Form fields
+  fullname = document.querySelector("#name");
+  email = document.querySelector("#contactFormEmail");
+  textarea = document.querySelector("#message");
+  // Form btns
+  formResetBtn = document.querySelector(".contact__form-btn--clear");
+  formSubmitBtn = document.querySelector(".contact__form-btn--submit");
 };
 
 function addListeners() {
   hamburgerSqueeze.addEventListener("click", toggleActive);
-  submitBtn.addEventListener("click", handleFormSubmit);
+  submitBtn.addEventListener("click", handleNewsletter);
+  formResetBtn.addEventListener("click", handleFormClear);
+  formSubmitBtn.addEventListener("click", handleFormSubmit);
 }
 
 const toggleActive = () => {
@@ -33,8 +47,88 @@ const toggleActive = () => {
   }
 }
 
+const handleNewsletter = (event) => {
+  event.preventDefault();
+}
+
+const handleFormClear = (event) => {
+  event.preventDefault();
+  const formFields = [fullname, email, textarea]; 
+  formFields.forEach((formField) => formField.value = "");
+}
+
 const handleFormSubmit = (event) => {
   event.preventDefault();
+
+  const formFields = [
+    {
+      input: fullname,
+      minLength: 3
+    },
+    {
+      input: email,
+      minLength: 8
+    },
+    {
+      input: textarea,
+      minLength: 10
+    }
+  ];
+
+  checkForm(formFields);
+  checkLength(formFields);
+  checkEmail(email);
+  checkForErrors(formFields);
+}
+
+const checkForm = (formFields) => {
+  formFields.forEach((field) => {
+    field.input.value === ""
+      ? showError(field.input, "Wartość nie może być pusta.")
+      : hideError(field.input);
+  });
+}
+
+const checkLength = (formFields) => {
+  formFields.forEach((field) => {
+    field.input.value.length < field.minLength
+      ? showError(field.input, `To pole musi zawierać minimum ${field.minLength} znaków.`)
+      : hideError(field.input);
+  });
+}
+
+const checkEmail = (email) => {
+  const regexp = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+
+  !regexp.test(email.value)
+    ? showError(email, "Niepoprawny adres e-mail.")
+    : hideError(email);
+}
+
+const showError = (field, message) => {
+  field.classList.add("error");
+  field.nextElementSibling.style.display = "block";
+  field.nextElementSibling.textContent = message;
+}
+
+const hideError = (field) => {
+  field.classList.remove("error");
+  field.nextElementSibling.style.display = "none";
+  field.nextElementSibling.textContent = "";
+}
+
+const checkForErrors = (formFields) => {
+  let errorCount = 0;
+  
+  formFields.forEach((field) => {
+    if (field.input.classList.contains("error")) {
+      errorCount += 1
+    }
+  });
+
+  if (errorCount === 0) {
+    console.log("Formularz przesłany!");
+  }
 }
 
 const handleCurrentYear = () => {
