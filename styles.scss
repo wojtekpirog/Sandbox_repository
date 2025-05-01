@@ -33,6 +33,10 @@ body {
   width: 96%;
 }
 
+.section {
+  padding: 6em 2em;
+}
+
 .section-title {
   width: fit-content;
   position: relative;
@@ -374,7 +378,6 @@ body {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 2em;
-    padding: 6em 2em;
   }
 
   &__card {
@@ -448,7 +451,6 @@ body {
     "box box box"
     "box box box"
   ;
-  padding: 6em 2em;
 
   &__title {
     grid-area: title;
@@ -527,7 +529,6 @@ body {
 // Plans
 
 .plans {
-  padding: 6em 2em;
   background-color: $darker;
 
   &__container {
@@ -568,7 +569,6 @@ body {
 // Newsletter
 
 .newsletter {
-  padding: 6em 2em;
   background-color: $red;
   text-align: center;
 
@@ -616,11 +616,34 @@ body {
   }
 }
 
+// Gallery
+
+.gallery {
+  &__img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+
+    &:nth-child(odd) {
+      display: none;
+    }
+  }
+}
+
+// Contact
+
+// Footer
+
+.footer {
+  padding: 2em;
+  text-align: center;
+  border-top: 2px solid $darker;
+}
+
 /** BREAKPOINTS **/
 
 @media (min-width: 576px) {
   .info {
-    padding: 10em 2em;
     grid-template-areas: 
       "title box"
       "title box"
@@ -648,11 +671,24 @@ body {
       display: block;
     }
   }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__img:nth-child(odd) {
+      display: inline;
+    }
+  }
 }
 
 @media (min-width: 768px) {
   .wrapper {
     width: 720px;
+  }
+
+  .section {
+    padding: 10em 2em;
   }
 
   .section-title {
@@ -664,10 +700,6 @@ body {
   }
 
   .cards {
-    &__box {
-      padding: 10em 2em;
-    }
-
     &__card {
       grid-row: 1 / 2;
 
@@ -686,8 +718,6 @@ body {
   }
 
   .newsletter {
-    padding: 10em 2em;
-
     &__form {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -757,8 +787,6 @@ body {
   }
 
   .plans {
-    padding: 10em 2em;
-
     &__container {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -799,6 +827,10 @@ body {
         font-size: 2rem;
       }
     }
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

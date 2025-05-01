@@ -24,6 +24,10 @@ body {
   width: 96%;
 }
 
+.section {
+  padding: 6em 2em;
+}
+
 .section-title {
   width: -moz-fit-content;
   width: fit-content;
@@ -303,7 +307,6 @@ body {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 2em;
-  padding: 6em 2em;
 }
 .cards__card {
   position: relative;
@@ -359,7 +362,6 @@ body {
   position: relative;
   display: grid;
   grid-template-areas: "title title title" "box box box" "box box box";
-  padding: 6em 2em;
 }
 .info__title {
   grid-area: title;
@@ -422,7 +424,6 @@ body {
 }
 
 .plans {
-  padding: 6em 2em;
   background-color: #191919;
 }
 .plans__container {
@@ -455,7 +456,6 @@ body {
 }
 
 .newsletter {
-  padding: 6em 2em;
   background-color: #a01c35;
   text-align: center;
 }
@@ -495,10 +495,25 @@ body {
   }
 }
 
+.gallery__img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.gallery__img:nth-child(odd) {
+  display: none;
+}
+
+.footer {
+  padding: 2em;
+  text-align: center;
+  border-top: 2px solid #191919;
+}
+
 /** BREAKPOINTS **/
 @media (min-width: 576px) {
   .info {
-    padding: 10em 2em;
     grid-template-areas: "title box" "title box" "title box";
   }
   .info__title {
@@ -517,19 +532,26 @@ body {
   .info__img {
     display: block;
   }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery__img:nth-child(odd) {
+    display: inline;
+  }
 }
 @media (min-width: 768px) {
   .wrapper {
     width: 720px;
+  }
+  .section {
+    padding: 10em 2em;
   }
   .section-title {
     font-size: 4rem;
   }
   .section-title::before {
     height: 4px;
-  }
-  .cards__box {
-    padding: 10em 2em;
   }
   .cards__card {
     grid-row: 1/2;
@@ -542,9 +564,6 @@ body {
   }
   .cards__card--three {
     grid-column: 7/-1;
-  }
-  .newsletter {
-    padding: 10em 2em;
   }
   .newsletter__form {
     display: grid;
@@ -595,9 +614,6 @@ body {
   .nav__desktop {
     display: block;
   }
-  .plans {
-    padding: 10em 2em;
-  }
   .plans__container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -625,6 +641,9 @@ body {
   }
   .header__text-subtitle {
     font-size: 2rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 @keyframes pulse {
