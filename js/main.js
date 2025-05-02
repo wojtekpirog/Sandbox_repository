@@ -9,6 +9,8 @@ let textarea;
 // Form btns
 let formResetBtn;
 let formSubmitBtn;
+// Navbar links
+let navbarLinks;
 
 function main() {
   getElements();
@@ -28,6 +30,8 @@ function getElements() {
   // Form btns
   formResetBtn = document.querySelector(".contact__form-btn--clear");
   formSubmitBtn = document.querySelector(".contact__form-btn--submit");
+  // Navbar links
+  navbarLinks = mobileNav.querySelectorAll(".nav__link");
 };
 
 function addListeners() {
@@ -35,16 +39,26 @@ function addListeners() {
   submitBtn.addEventListener("click", handleNewsletter);
   formResetBtn.addEventListener("click", handleFormClear);
   formSubmitBtn.addEventListener("click", handleFormSubmit);
+  navbarLinks.forEach((navbarLink) => navbarLink.addEventListener("click", closeNavbarMenu));
+  window.addEventListener("resize", () => window.innerWidth >= 992 ? closeNavbarMenu() : false);
 }
 
 const toggleActive = () => {
-  if (hamburgerSqueeze.classList.contains("hamburger__squeeze--active")) {
-    hamburgerSqueeze.classList.remove("hamburger__squeeze--active")
-    mobileNav.classList.remove("nav__mobile--active");
-  } else {
-    hamburgerSqueeze.classList.add("hamburger__squeeze--active")
-    mobileNav.classList.add("nav__mobile--active");
-  }
+  mobileNav.classList.contains("nav__mobile--active")
+    ? closeNavbarMenu()
+    : openNavbarMenu();
+}
+
+const openNavbarMenu = () => {
+  document.body.classList.add("no-scroll");
+  hamburgerSqueeze.classList.add("hamburger__squeeze--active")
+  mobileNav.classList.add("nav__mobile--active");
+}
+
+const closeNavbarMenu = () => {
+  document.body.classList.remove("no-scroll");
+  hamburgerSqueeze.classList.remove("hamburger__squeeze--active")
+  mobileNav.classList.remove("nav__mobile--active");
 }
 
 const handleNewsletter = (event) => {

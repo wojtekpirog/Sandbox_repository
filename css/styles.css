@@ -18,6 +18,9 @@ body {
   font-size: 1.6rem;
   font-family: "Raleway", Arial, sans-serif;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 
 .wrapper {
   margin: 0 auto;

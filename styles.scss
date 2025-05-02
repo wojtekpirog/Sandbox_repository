@@ -26,6 +26,10 @@ body {
   color: $white;
   font-size: 1.6rem;
   font-family: 'Raleway', Arial, sans-serif;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
